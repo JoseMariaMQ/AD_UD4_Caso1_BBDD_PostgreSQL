@@ -21,7 +21,7 @@ public class InteraccionUsuario {
 
     private int opcionElegida;
 
-    //Contructor sin parámetros para instanciar la clase
+    //Constructor sin parámetros para instanciar la clase
     public InteraccionUsuario() {
     }
 
@@ -244,7 +244,7 @@ public class InteraccionUsuario {
                 break;
             case 7: //Si elige la opción 7 preguntamos por fecha de visita del cliente que quiere buscar
                 System.out.println("Has elegido búsqueda por fecha de visita de cliente.\n" +
-                        "Introduce una fecha de visita de cliente (Entre 1980-01-01 y fecha actual):");
+                        "Introduce una fecha de visita de cliente (Entre 1990-01-01 y fecha actual):");
                 LocalDate[] fechaVisita = new LocalDate[]{comprobarFechas()}; //Comprobamos la fecha con su método
                 //Instanciamos un cliente introduciéndole el valor de la fecha solo, los demás nulos
                 cliente = new Cliente(-1, null, null, null, null, -1, fechaVisita);
@@ -259,6 +259,7 @@ public class InteraccionUsuario {
         }
     }
 
+    //Método que modifica datos de un cliente.
     public void modificarCliente() {
         System.out.println("Has elegido modificar un cliente.");
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -365,7 +366,7 @@ public class InteraccionUsuario {
         //Comprobamos que la fecha este en el rango de 1990-01-01 yla fecha actual si no volvemos a preguntar la fecha
         while ((anio<1990 || anio>LocalDate.now().getYear()) || (anio==LocalDate.now().getYear() && mes>LocalDate.now().getMonthValue())
                 || (anio==LocalDate.now().getYear() && mes==LocalDate.now().getMonthValue() && dia>LocalDate.now().getDayOfMonth())) {
-            System.out.println("Fecha incorrecta, vuelva a introducir la fecha:");
+            System.out.println("Fecha incorrecta, vuelva a introducir la fecha (Entre 1990 y fecha actual):");
             System.out.println("Introduce el año:");
             anio = comprobarEntrada(); //Comprobamos que introduce un entero
             System.out.println("Introduce el mes:");

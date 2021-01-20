@@ -94,7 +94,7 @@ public class Cliente {
     //Método toString() para imprimir por pantalla.
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Model.Cliente: ");
+        final StringBuffer sb = new StringBuffer("Cliente: ");
         sb.append("id=").append(idCliente);
         sb.append(", Nombre='").append(nombre).append('\'');
         sb.append(", 1º Apellido='").append(apellido1).append('\'');

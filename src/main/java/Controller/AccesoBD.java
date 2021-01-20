@@ -21,7 +21,7 @@ public class AccesoBD {
             String usuario = "postgres";
             String contraseña = "root";
 
-            //Objeto conexión le introducimos los datos par la conexión
+            //Objeto conexión le introducimos los datos para la conexión
             conn = DriverManager.getConnection(url, usuario, contraseña);
             System.out.println("Conexión realizada con éxito!!");
         } catch (ClassNotFoundException | SQLException e) {
@@ -34,7 +34,7 @@ public class AccesoBD {
     //Método para cerrar conexión
     public void cerrar() {
         try {
-            conn.close();
+            if (conn != null) conn.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

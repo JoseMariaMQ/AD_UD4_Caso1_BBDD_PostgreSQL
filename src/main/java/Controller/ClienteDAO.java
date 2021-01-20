@@ -39,13 +39,13 @@ public class ClienteDAO {
                 System.out.println("No se ha insertado cliente.");
             } else {
                 System.out.println("Insertando cliente...");
-                System.out.println("Model.Cliente insertado correctamente!");
+                System.out.println("Cliente insertado correctamente!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally { //Cerrar conexiones
             try {
-                ps.close();
+                if (ps != null) ps.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -95,8 +95,8 @@ public class ClienteDAO {
             throwables.printStackTrace();
         } finally { //Cerramos para liberar recursos
             try {
-                st.close();
-                rs.close();
+                if (ps != null) ps.close();
+                if (rs != null) rs.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -124,13 +124,13 @@ public class ClienteDAO {
                 System.out.println("No hay ningún cliente con ese 'id'.");
             } else {
                 System.out.println("Borrando cliente...");
-                System.out.println("Model.Cliente borrado correctamente!");
+                System.out.println("Cliente borrado correctamente!");
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally { //Cerramos conexiones
             try {
-                ps.close();
+                if (ps != null) ps.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -184,8 +184,9 @@ public class ClienteDAO {
             throwables.printStackTrace();
         } finally { //Cerramos conexiones
             try {
-                ps.close();
-                ps2.close();
+                if (ps != null) ps.close();
+                if (ps2 != null) ps2.close();
+                if (rs != null) rs.close();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -500,8 +501,8 @@ public class ClienteDAO {
         }
         //Cerramos conexiones
         try {
-            ps.close();
-            rs.close();
+            if (ps != null) ps.close();
+            if (rs != null) rs.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -684,7 +685,8 @@ public class ClienteDAO {
                     }
                     //Cerramos conexiones
                     try {
-                        ps.close();
+                        if (ps != null) ps.close();
+                        if (rs != null) rs.close();
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
                     }
