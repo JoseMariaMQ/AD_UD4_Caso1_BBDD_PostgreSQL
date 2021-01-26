@@ -8,6 +8,14 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * @author JoseMariaMQ
+ * @version 1.0.1
+ * Esta clase su principal función es la interacción con el usuario, donde se le preguntará por las opciones que quiere
+ * realizar las cuales se le pedirán como entrada por consola, según la opción elegida llamará a otros métodos que si
+ * necesitan que el usuario introduzca más datos u opciones los pedirán por consola o simplemente realizarán la acción
+ * requerida.
+ */
 public class InteraccionUsuario {
     //Variables con las opciones del menu principal
     private String info = "Elige una de las siguientes opciones:";
@@ -21,11 +29,15 @@ public class InteraccionUsuario {
 
     private int opcionElegida;
 
-    //Constructor sin parámetros para instanciar la clase
+    /**
+     * Método constructor sin parámetros para poder instanciar la clase desde otra principal
+     */
     public InteraccionUsuario() {
     }
 
-    //Método que muestra las opciones y llama a un método en función de la opción elegida
+    /**
+     * Método que muestra las opciones y llama a un método en función de la opción elegida
+     */
     public void mostrarOpciones() {
         System.out.println(info + "\n" +
                 opcion1 + "\n" +
@@ -71,7 +83,10 @@ public class InteraccionUsuario {
         }
     }
 
-    //Método que muestra todos los clientes de la base de datos
+    /**
+     * Método que muestra todos los clientes de la base de datos llamando al método de la clase con el CRUD que realiza
+     * esta acción.
+     */
     public void mostrarClientes() {
         System.out.println("Has elegido mostrar clientes.");
         //Instanciamos la clase DAO
@@ -80,7 +95,10 @@ public class InteraccionUsuario {
         clienteDAO.mostrarClientes();
     }
 
-    //Método para insertar un cliente
+    /**
+     * Método que inserta un cliente, pide por consola los parámetros necesarios para poder instanciar un cliente y
+     * llama al método de la clase con el CRUD que realiza esta acción pasándole como parámetros dicho cliente.
+     */
     public void insertarCliente() {
         System.out.println("Has elegido insertar cliente.");
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -130,7 +148,11 @@ public class InteraccionUsuario {
         clienteDAO.insertarCliente(cliente);
     }
 
-    //Método para eliminar cliente
+    /**
+     * Método que elimina un cliente, lo primero muestra los clientes de la base de datos llamando al método de la clase
+     * con el CRUD que realiza esta acción, luego pregunta el id de cliente por consola que se quiere eliminar y llama al
+     * método de la clase CRUD que realiza esta acción pasándole como parámetro el id de cliente.
+     */
     public void eliminarCliente() {
         System.out.println("Has elegido eliminar cliente.");
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -146,7 +168,12 @@ public class InteraccionUsuario {
         clienteDAO.eliminarCliente(id);
     }
 
-    //Método para insertar una visita a un determinado cliente
+    /**
+     * Método que inserta una nueva visita a un cliente, primero muestra los clientes llamando al método de la clase con
+     * CRUD que realiza esta acción, luego pide por consola el id del cliente a insertar fecha y la fecha de desea añadir,
+     * y llama al método de la clase con el CRUD que realiza esta acción. Este proceso se repite mientras el cliente desee
+     * añadir visitas a clientes.
+     */
     public void insertarVisita() {
         System.out.println("Has elegido insertar nueva visita a cliente.");
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -173,7 +200,11 @@ public class InteraccionUsuario {
         } while (otraVisita.equalsIgnoreCase("y")); //Mientras el usuario introduzca en otraVisita, y o Y se ejecuta el bucle
     }
 
-    //Método para buscar un cliente, por el dato que decida el usuario
+    /**
+     * Método para buscar un cliente, se le pide al usuario que seleccione una opción las cuales son por que dato quiere
+     * buscar al cliente, luego se comprueba que opción ha elegido y se pide el dato del cliente, se llama al método de
+     * la clase con el CRUD que realiza esa acción pasandole como parámetro el dato del cliente.
+     */
     public void buscarCliente() {
         System.out.println("Has elegido buscar cliente.");
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -259,7 +290,12 @@ public class InteraccionUsuario {
         }
     }
 
-    //Método que modifica datos de un cliente.
+    /**
+     * Método que modifica datos de un cliente, primero muestra todos los clientes, luego pide al usuario que elija una
+     * opción la cual es el dato que quiere modificar del cliente luego se comprueba que opción eligio y se pide por
+     * consola que introduzca el id de cliente y el dato que le quiere cambiar al cliente y llama al método de la clase
+     * con el CRUD que realiza esta opción pasándole como parámetros los datos del cliente.
+     */
     public void modificarCliente() {
         System.out.println("Has elegido modificar un cliente.");
         ClienteDAO clienteDAO = new ClienteDAO();
@@ -353,7 +389,12 @@ public class InteraccionUsuario {
         }
     }
 
-    //Método para insertar fechas
+    /**
+     * Método que se utiliza para insertar fechar el cual verifica que la fecha es correcta según las especificaciones
+     * dadas, pide por pantalla el año, el mes y el día por separado, luego comprueba que la fecha sea posterior a 1990
+     * y que no sea posterior al dá actual en el que estamos.
+     * @return Retorna la fecha introducida y correcta.
+     */
     public LocalDate comprobarFechas() {
         Scanner in = new Scanner(System.in);
 
@@ -379,6 +420,12 @@ public class InteraccionUsuario {
     }
 
     //Método para capturar errores en la entrada de datos de tipo entero y repetir si no se introduce un dato correcto
+
+    /**
+     * Método que verifica entrada de datos por consola de tipo entero, controla que no se introduce un dato que no sea
+     * un número entero.
+     * @return Retorna el número entero introducido verificado.
+     */
     public int comprobarEntrada() {
         Scanner in = new Scanner(System.in);
         int entrada = 0; //Inicializamos variable

@@ -19,10 +19,10 @@ public class AccesoBD {
             //Datos de la conexión
             String url = "jdbc:postgresql://localhost/ad_ud4_caso1";
             String usuario = "postgres";
-            String contraseña = "root";
+            String contrasena = "root";
 
             //Objeto conexión le introducimos los datos para la conexión
-            conn = DriverManager.getConnection(url, usuario, contraseña);
+            conn = DriverManager.getConnection(url, usuario, contrasena);
             System.out.println("Conexión realizada con éxito!!");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error al registrar el driver de PostgreSQL: " + e);
